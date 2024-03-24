@@ -10,13 +10,13 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-
     <modelVersion>4.0.0</modelVersion>
     <groupId>ejercito.mil.pe</groupId>
     <artifactId>api-core-ejercito-eureka-microservice</artifactId>
     <version>1.0.0</version>
     <name>api-core-ejercito-eureka-microservice</name>
     <description>api-core-ejercito-eureka-microservice</description>
+
     <developers>
         <developer>
             <id>cbaciliod</id>
@@ -27,6 +27,7 @@
                 <role>developer</role>
             </roles>
         </developer>
+
         <developer>
             <id>fdelrosarios</id>
             <name>faustina del rosario</name>
@@ -40,9 +41,30 @@
 
     <properties>
         <java.version>11</java.version>
+        <spring-cloud.version>2021.0.8</spring-cloud.version>
     </properties>
 
+    <scm>
+        <connection>scm:git:git@github.com:dbacilio88/api-core-ejercito-eureka-microservice.git</connection>
+        <developerConnection>scm:git:git@github.com:dbacilio88/api-core-ejercito-eureka-microservice.git
+        </developerConnection>
+        <url>https://github.com/dbacilio88/api-core-ejercito-eureka-microservice.git</url>
+    </scm>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
@@ -86,17 +108,12 @@
         </dependency>
         <!--lib bxcode -->
 
-        <!--lib cloud bxcode -->
+        <!--lib cloud spring -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-loadbalancer</artifactId>
-        </dependency>
-        <!--lib cloud bxcode -->
+        <!--lib cloud spring -->
 
 
         <dependency>
@@ -130,17 +147,6 @@
         </dependency>
     </dependencies>
 
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>2021.0.3</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
@@ -161,7 +167,13 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-changelog-plugin</artifactId>
+                <version>2.3</version>
+            </plugin>
+
         </plugins>
     </build>
-
 </project>
